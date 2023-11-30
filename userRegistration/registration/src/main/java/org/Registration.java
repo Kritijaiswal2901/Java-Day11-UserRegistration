@@ -4,47 +4,58 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Registration {
-    
+   private String validationResult;
+
     // Use Case 1: Validate First Name
-    void validateFirstName(String firstName) {
+    public void validateFirstName(String firstName) {
         String nameRegex = "[A-Z][a-zA-Z]{2,}";
         Pattern pattern = Pattern.compile(nameRegex);
         Matcher matcher = pattern.matcher(firstName);
 
         if (matcher.matches()) {
             System.out.println("Valid first name");
+            validationResult="Valid first name";
         } else {
             System.out.println("Invalid first name");
+            validationResult="InValid first name";
         }
     }
      // Use Case 2 : Validate Last name
-    void validateLastName(String lastName) {
+     public void validateLastName(String lastName) {
         String nameRegex = "[A-Z][a-zA-Z]{2,}";
         Pattern pattern = Pattern.compile(nameRegex);
         Matcher matcher = pattern.matcher(lastName);
 
         if (matcher.matches()) {
             System.out.println("Valid last name");
+             validationResult="Valid last name";
+
         } else {
             System.out.println("Invalid last name");
+             validationResult="InValid last name";
+
         }
     }
 
      // Use Case 3 : Validate email
-    void validateEmail(String email) {
+    public void validateEmail(String email) {
         String emailRegex ="([a-zA-Z0-9_\\-]+)(\\.[a-zA-Z0-9_\\-]+)*@([a-zA-Z]+)(\\.[a-zA-Z]{2,})";
         Pattern pattern = Pattern.compile(emailRegex);
         Matcher matcher = pattern.matcher(email);
 
         if (matcher.matches()) {
             System.out.println("Valid email");
+            validationResult="Valid email";
+
         } else {
             System.out.println("Invalid email");
+           validationResult="InValid email";
+
         }
     }
 
     // Use Case 4: Validate Mobile Format
-    void validateMobileNumber(String mobileNumber) {
+     public void validateMobileNumber(String mobileNumber) {
 
         String mobileRegex = "[0-9]{2}\\s[0-9]{10}";
         Pattern pattern = Pattern.compile(mobileRegex);
@@ -52,23 +63,36 @@ public class Registration {
 
         if (matcher.matches()) {
             System.out.println("Valid mobile number");
+            validationResult="Valid mobile number";
+
         } else {
             System.out.println("Invalid mobile number");
+            validationResult="InValid mobile number";
+
         }
     }
 
     // Use Case 5.-8: Validate password format
-    void validatePassword(String password) {
+    public void validatePassword(String password) {
 
-        String passwordRegex = "(?=.*[A-Z])(?=.*\\d)(?=.*[@#.*^%=+])[a-zA-Z0-9@#.*^%=+]{8,}";
+     String passwordRegex= "(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()-_+=])[A-Za-z\\d]*[!@#$%^&*()-_+=][A-Za-z\\d!@#$%^&*()-_+=]{8,}";
         Pattern pattern = Pattern.compile(passwordRegex);
         Matcher matcher = pattern.matcher(password);
 
         if (matcher.matches()) {
             System.out.println("Valid password");
+            validationResult="Valid password";
+
         } else {
             System.out.println("Invalid password");
+            validationResult="InValid password";
+
         }
     }
+
+    public String getValidationResult() {
+        return validationResult;
+    }
+
 
 }

@@ -7,44 +7,46 @@ private String email;
 private String mobileNumber;
 private String password;
     
-String getFirstName() {
+public String getFirstName() {
     return this.firstName;
 }
 
-void setFirstName(String firstName) {
+public void setFirstName(String firstName) {
     this.firstName = firstName;
 }
 
-String getLastName() {
+public String getLastName() {
     return this.lastName;
 }
 
-void setLastName(String lastName) {
+ public void setLastName(String lastName) {
     this.lastName = lastName;
 }
 
-String getEmail() {
+public String getEmail() {
     return this.email;
 }
 
-void setEmail(String email) {
+ public void setEmail(String email) {
     this.email = email;
 }
 
-String getMobileNumber() {
+public String getMobileNumber() {
     return this.mobileNumber;
 }
 
-void setMobileNumber(String mobileNumber) {
+ public void setMobileNumber(String mobileNumber) {
     this.mobileNumber = mobileNumber;
 }
 
-String getPassword(){
+public String getPassword(){
     return this.password;
 }
 
-void setPassword(String password){
+ public void setPassword(String password){
     this.password = password;
 }
+
+
 
 }
