@@ -29,4 +29,17 @@ public class Registration {
             System.out.println("Invalid last name");
         }
     }
+
+  // Use Case 3 : Validate email
+    void validateEmail(String email) {
+        String emailRegex = "[a-z0-9]+(\\.[a-z0-9]*)*@[a-z0-9]+\\.[a-z]+(\\.[a-z]*)*";
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+
+        if (matcher.matches()) {
+            System.out.println("Valid email");
+        } else {
+            System.out.println("Invalid email");
+        }
+    }
 }

@@ -23,6 +23,14 @@ public class Main {
        entry.setLastName(lastName);
        userRegistration.validateLastName(entry.getLastName());
 
+       //UC-3
+       System.out.print("Enter email : ");
+       String email = scanner.next();
+
+        entry.setEmail(email);
+        userRegistration.validateEmail(entry.getEmail());
+
+
 
 }
 }
