@@ -1,6 +1,7 @@
 package org;
 
 import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
      
@@ -36,6 +37,11 @@ public class Main {
         entry.setMobileNumber(mobileNumber);;
         userRegistration.validateMobileNumber(mobileNumber);
 
+        //UC-5-8
+       System.out.print("Enter password: ");
+       String password = scanner.next();
 
+        entry.setPassword(password);;
+        userRegistration.validatePassword(password);
 }
 }
