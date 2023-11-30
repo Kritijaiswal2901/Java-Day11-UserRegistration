@@ -1,6 +1,8 @@
 package org;
 public class UserEntries {
+
 private String firstName;
+private String lastName;
     
 String getFirstName() {
     return this.firstName;
@@ -9,5 +11,15 @@ String getFirstName() {
 void setFirstName(String firstName) {
     this.firstName = firstName;
 }
+
+
+String getLastName() {
+    return this.lastName;
+}
+
+void setLastName(String lastName) {
+    this.lastName = lastName;
+}
+
 
 }

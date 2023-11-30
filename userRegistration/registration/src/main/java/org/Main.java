@@ -14,7 +14,14 @@ public class Main {
 
         entry.setFirstName(firstName);
         userRegistration.validateFirstName(entry.getFirstName());
-        scanner.close();
+       // scanner.close();
+        
+       //UC-2
+       System.out.print("Enter last name : ");
+       String lastName = scanner.next();
+
+       entry.setLastName(lastName);
+       userRegistration.validateLastName(entry.getLastName());
 
 
 }
