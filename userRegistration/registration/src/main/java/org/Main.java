@@ -1,7 +1,6 @@
 package org;
 
 import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
      
@@ -29,7 +28,13 @@ public class Main {
 
         entry.setEmail(email);
         userRegistration.validateEmail(entry.getEmail());
+     
+       //UC-4
+       System.out.print("Enter mobile number : ");
+       String mobileNumber = scanner.next();
 
+        entry.setMobileNumber(mobileNumber);;
+        userRegistration.validateMobileNumber(mobileNumber);
 
 
 }
