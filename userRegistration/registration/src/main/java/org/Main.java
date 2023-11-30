@@ -53,6 +53,7 @@ public class Main {
             userRegistration.validateEmail(registrationFields.getEmail());
             System.out.println("-----------------------------");
         }
+        scanner.close();
     }
 
     private static String[] getEmailSamples() {
@@ -79,8 +80,5 @@ public class Main {
                 "abc@gmail.com.1a",
                 "abc@gmail.com.aa.au"
         };
-
-
-       
 }
 }
