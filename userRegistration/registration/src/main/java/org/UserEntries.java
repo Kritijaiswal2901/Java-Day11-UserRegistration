@@ -4,6 +4,7 @@ public class UserEntries {
 private String firstName;
 private String lastName;
 private String email;
+private String mobileNumber;
     
 String getFirstName() {
     return this.firstName;
@@ -28,4 +29,11 @@ String getEmail() {
 void setEmail(String email) {
     this.email = email;
 }
+String getMobileNumber() {
+    return this.mobileNumber;
+}
+void setMobileNumber(String mobileNumber) {
+    this.mobileNumber = mobileNumber;
+}
+
 }

@@ -42,4 +42,19 @@ public class Registration {
             System.out.println("Invalid email");
         }
     }
+
+    // Use Case 4: Validate Mobile Format
+    void validateMobileNumber(String mobileNumber) {
+                
+        String mobileRegex = "\\+?[1-9][0-9]{7,14}";
+        Pattern pattern = Pattern.compile(mobileRegex);
+        Matcher matcher = pattern.matcher(mobileNumber);
+
+        if (matcher.matches()) {
+            System.out.println("Valid mobile number");
+        } else {
+            System.out.println("Invalid mobile number");
+        }
+    }
+
 }
