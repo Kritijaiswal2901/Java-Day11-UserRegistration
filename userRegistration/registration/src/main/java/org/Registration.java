@@ -7,7 +7,7 @@ public class Registration {
     
     // Use Case 1: Validate First Name
     void validateFirstName(String firstName) {
-        String nameRegex = "[A-Z][a-z]{2,}";
+        String nameRegex = "[A-Z][a-zA-Z]{2,}";
         Pattern pattern = Pattern.compile(nameRegex);
         Matcher matcher = pattern.matcher(firstName);
 
@@ -19,7 +19,7 @@ public class Registration {
     }
      // Use Case 2 : Validate Last name
     void validateLastName(String lastName) {
-        String nameRegex = "[A-Z][a-z]{2,}";
+        String nameRegex = "[A-Z][a-zA-Z]{2,}";
         Pattern pattern = Pattern.compile(nameRegex);
         Matcher matcher = pattern.matcher(lastName);
 
@@ -32,7 +32,7 @@ public class Registration {
 
      // Use Case 3 : Validate email
     void validateEmail(String email) {
-        String emailRegex = "[a-z0-9]+(\\.[a-z0-9]*)*@[a-z0-9]+\\.[a-z]+(\\.[a-z]*)*";
+        String emailRegex ="([a-zA-Z0-9_\\-]+)(\\.[a-zA-Z0-9_\\-]+)*@([a-zA-Z]+)(\\.[a-zA-Z]{2,})";
         Pattern pattern = Pattern.compile(emailRegex);
         Matcher matcher = pattern.matcher(email);
 
@@ -46,7 +46,7 @@ public class Registration {
     // Use Case 4: Validate Mobile Format
     void validateMobileNumber(String mobileNumber) {
 
-        String mobileRegex = "\\+?[1-9][0-9]{7,14}";
+        String mobileRegex = "[0-9]{2}\\s[0-9]{10}";
         Pattern pattern = Pattern.compile(mobileRegex);
         Matcher matcher = pattern.matcher(mobileNumber);
 
@@ -60,7 +60,7 @@ public class Registration {
     // Use Case 5.-8: Validate password format
     void validatePassword(String password) {
 
-        String passwordRegex = "^(?=.*[A-Z])(?=.*\\d)(?=.*[^A-Za-z\\d]).{8,}$";
+        String passwordRegex = "(?=.*[A-Z])(?=.*\\d)(?=.*[@#.*^%=+])[a-zA-Z0-9@#.*^%=+]{8,}";
         Pattern pattern = Pattern.compile(passwordRegex);
         Matcher matcher = pattern.matcher(password);
 
