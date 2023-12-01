@@ -1,8 +1,11 @@
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.Registration;
 import org.UserEntries;
-import org.junit.jupiter.api.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class MyTest {
 
@@ -18,7 +21,7 @@ public class MyTest {
 
     @BeforeEach
     public void setUp(){
-        System.out.println("Before Test Exceution");
+        System.out.println("Before Test Execution");
     }
 
     @AfterEach
@@ -30,10 +33,16 @@ public class MyTest {
     public void testValidateFirstName() {
         Registration userRegistration = new Registration();
         UserEntries registrationFields = new UserEntries();
-        
+
         registrationFields.setFirstName("Kriti");
         userRegistration.validateFirstName(registrationFields.getFirstName());
         assertEquals("Valid first name", userRegistration.getValidationResult());
+    }
+
+    @Test
+    public void testFailValidateFirstName() {
+        Registration userRegistration = new Registration();
+        UserEntries registrationFields = new UserEntries();
 
         registrationFields.setFirstName("kriti");
         userRegistration.validateFirstName(registrationFields.getFirstName());
@@ -48,6 +57,12 @@ public class MyTest {
         registrationFields.setLastName("Jaiswal");
         userRegistration.validateLastName(registrationFields.getLastName());
         assertEquals("Valid last name", userRegistration.getValidationResult());
+    }
+
+    @Test
+    public void testFailValidateLastName() {
+        Registration userRegistration = new Registration();
+        UserEntries registrationFields = new UserEntries();
 
         registrationFields.setLastName("jaiswal");
         userRegistration.validateLastName(registrationFields.getLastName());
@@ -62,6 +77,12 @@ public class MyTest {
         registrationFields.setEmail("kriti@yahoo.com");
         userRegistration.validateEmail(registrationFields.getEmail());
         assertEquals("Valid email", userRegistration.getValidationResult());
+    }
+
+    @Test
+    public void testFailValidateEmail() {
+        Registration userRegistration = new Registration();
+        UserEntries registrationFields = new UserEntries();
 
         registrationFields.setEmail("kriti,com");
         userRegistration.validateEmail(registrationFields.getEmail());
@@ -73,10 +94,15 @@ public class MyTest {
         Registration userRegistration = new Registration();
         UserEntries registrationFields = new UserEntries();
 
-
         registrationFields.setMobileNumber("91 9919819801");
         userRegistration.validateMobileNumber(registrationFields.getMobileNumber());
         assertEquals("Valid mobile number", userRegistration.getValidationResult());
+    }
+
+    @Test
+    public void testFailValidateMobileNumber() {
+        Registration userRegistration = new Registration();
+        UserEntries registrationFields = new UserEntries();
 
         registrationFields.setMobileNumber("95647");
         userRegistration.validateMobileNumber(registrationFields.getMobileNumber());
@@ -91,9 +117,39 @@ public class MyTest {
         registrationFields.setPassword("Kri@123ihj");
         userRegistration.validatePassword(registrationFields.getPassword());
         assertEquals("Valid password", userRegistration.getValidationResult());
+    }
+
+    @Test
+    public void testFailValidatePassword() {
+        Registration userRegistration = new Registration();
+        UserEntries registrationFields = new UserEntries();
 
         registrationFields.setPassword("jhghfjfn");
         userRegistration.validatePassword(registrationFields.getPassword());
         assertNotEquals("Valid password", userRegistration.getValidationResult());
     }
+
+    
+    @ParameterizedTest
+    @ValueSource(strings = {"kriti@yahoo.com", "abc-100@yahoo.com", "abc.100@yahoo.com", "abc111@abc.com", "abc-100@abc.net"})
+    void testValidateEmail(String userEmail) {
+        Registration userRegistration = new Registration();
+        UserEntries registrationFields = new UserEntries();
+
+        registrationFields.setEmail(userEmail);
+        userRegistration.validateEmail(registrationFields.getEmail());
+        assertEquals("Valid email", userRegistration.getValidationResult());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"abc", "abc@.com.my", "abc123@gmail.a", "abc123@.com", "abc123@.com.com", ".abc@abc.com", ".abc()*@gmail.com", "abc@%*.com", "abc..2002@gmail.com"})
+    void testFailValidateEmail(String userEmail) {
+        Registration userRegistration = new Registration();
+        UserEntries registrationFields = new UserEntries();
+
+        registrationFields.setEmail(userEmail);
+        userRegistration.validateEmail(registrationFields.getEmail());
+        assertNotEquals("Valid email", userRegistration.getValidationResult());
+    }
+
 }
