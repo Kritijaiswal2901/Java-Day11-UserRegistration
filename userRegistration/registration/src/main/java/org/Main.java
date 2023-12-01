@@ -8,41 +8,64 @@ public class Main {
         Registration userRegistration = new Registration();
         UserEntries entry = new UserEntries();
         Scanner scanner = new Scanner(System.in);
-        //UC-1
-        System.out.print("Enter first name : ");
-        String firstName = scanner.next();
-
-        entry.setFirstName(firstName);
-        userRegistration.validateFirstName(entry.getFirstName());
-       // scanner.close();
+        try {
+            // UC-1
+            System.out.print("Enter first name: ");
+            String firstName = scanner.next();
+    
+            entry.setFirstName(firstName);
+            userRegistration.validateFirstName(entry.getFirstName());
+        } catch (InvalidFirstnameException e) {
+            System.out.println(e.getMessage());
+        }
+    
         
        //UC-2
        System.out.print("Enter last name : ");
        String lastName = scanner.next();
 
        entry.setLastName(lastName);
-       userRegistration.validateLastName(entry.getLastName());
+       try {
+        userRegistration.validateLastName(entry.getLastName());
+    } catch (InvalidLastnameException e) {
+     System.out.println(e.getMessage());
+
+    }
 
        //UC-3
        System.out.print("Enter email : ");
        String email = scanner.next();
 
         entry.setEmail(email);
-        userRegistration.validateEmail(entry.getEmail());
+        try {
+            userRegistration.validateEmail(entry.getEmail());
+        } catch (InvalidEmailException e) {
+        System.out.println(e.getMessage());
+        }
      
        //UC-4
        System.out.print("Enter mobile number : ");
        String mobileNumber = scanner.next();
 
         entry.setMobileNumber(mobileNumber);;
-        userRegistration.validateMobileNumber(mobileNumber);
+        try {
+            userRegistration.validateMobileNumber(entry.getMobileNumber());
+        } catch (InvalidMobileNumberException e) {
+        System.out.println(e.getMessage());
+
+        }
 
         //UC-5-8
        System.out.print("Enter password: ");
        String password = scanner.next();
 
         entry.setPassword(password);;
-        userRegistration.validatePassword(password);
+        try {
+            userRegistration.validatePassword(password);
+        } catch (InvalidPasswordException e) {
+        System.out.println(e.getMessage());
+
+        }
 
         //UC-9
         for (String em : getEmailSamples()) {
@@ -50,7 +73,12 @@ public class Main {
             registrationFields.setEmail(em);
 
             System.out.println("Validating email: " + em);
-            userRegistration.validateEmail(registrationFields.getEmail());
+            try {
+                userRegistration.validateEmail(registrationFields.getEmail());
+            } catch (InvalidEmailException e) {
+            System.out.println(e.getMessage());
+
+            }
             System.out.println("-----------------------------");
         }
         scanner.close();
